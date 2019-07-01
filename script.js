@@ -29,6 +29,7 @@ function moveUp() {
 }
 document.addEventListener("keydown", moveUp)
 document.addEventListener("click", moveUp)
+document.addEventListener("touchstart", moveUp)
 
 // Pipe coordinates
 var pipe = [];
