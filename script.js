@@ -21,11 +21,11 @@ var constant = pipeUp.height + gap;
 let bX = 10; //Bird X position
 let bY = 150; //Bird Y position
 
-let gravity = 1;
+let gravity = 1.5;
 
 // On click
 function moveUp() {
-    bY -= 20;
+    bY -= 25;
 }
 document.addEventListener("keydown", moveUp)
 document.addEventListener("click", moveUp)
@@ -54,6 +54,16 @@ function draw() {
                 x : cvs.width,
                 y : Math.floor(Math.random() * pipeUp.height) - pipeUp.height
             });
+        }
+        // Detect collision
+        if (bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeUp.width &&
+            (bY <= pipe[i].y + pipeUp.height || bY + bird.height >= pipe[i].y + constant) ||
+            bY + bird.height >= cvs.height - fg.height) {
+                location.reload(); // Reload the page
+        }
+            
+        if (pipe[i].x == 5) {
+            score++;
         }
     }
     
